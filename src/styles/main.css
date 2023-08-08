@@ -1,0 +1,273 @@
+/** 
+* scrollbars mixin
+ * @param  {size}                Scrollbar handler width & height
+ * @param  {foreground-color}    Scrollbar foreground color
+ * @param  {background-color}    Scrollbar background color
+* 
+* @example - @include scrollbars(10px, pink, red);
+*/
+* {
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter Tight", sans-serif;
+  -webkit-user-select: none; /* Safari */ /* IE 10 and IE 11 */
+  -moz-user-select: none;
+       user-select: none; /* Standard syntax */
+}
+
+hr {
+  width: 100%;
+  height: 0;
+  margin: 0;
+  border: 0;
+  border-top: 1px dashed rgba(75, 75, 75, 0.5);
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-size: 1.4em;
+}
+
+h3 {
+  margin: 0.6em 0 0.4em 0;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  background-color: #111111;
+}
+
+.App {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #111111;
+}
+
+main {
+  width: 100%;
+  color: rgb(19, 19, 19);
+  padding: 0 0.5em;
+  background: rgb(238, 238, 238);
+  background: linear-gradient(0deg, rgb(238, 238, 238) 0%, rgb(255, 255, 255) 100%);
+  max-height: calc(100vh - 70px);
+  position: absolute;
+  bottom: 0;
+  transition: all 0.3s ease-in-out;
+  height: -webkit-fill-available;
+  overflow: hidden;
+  border-radius: 30px 30px 0 0;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+          mask-image: -webkit-radial-gradient(white, black);
+}
+
+.categories-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 0.5em;
+  width: 100%;
+  overflow-x: auto;
+  overscroll-behavior: none;
+  flex-shrink: 0;
+}
+.categories-wrapper::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.categories-wrapper::-webkit-scrollbar-thumb {
+  background: #e8b225;
+}
+.categories-wrapper::-webkit-scrollbar-track {
+  background: #f4d992;
+}
+.categories-wrapper {
+  scrollbar-face-color: #e8b225;
+  scrollbar-track-color: #f4d992;
+}
+
+.category-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+}
+.category-wrapper h2 {
+  margin: 0;
+}
+
+.content-wrapper {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 1em 0.5em;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+}
+.content-wrapper::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.content-wrapper::-webkit-scrollbar-thumb {
+  background: #e8b225;
+}
+.content-wrapper::-webkit-scrollbar-track {
+  background: #f4d992;
+}
+.content-wrapper {
+  scrollbar-face-color: #e8b225;
+  scrollbar-track-color: #f4d992;
+}
+.content-wrapper.product {
+  display: grid;
+  grid-template-rows: 200px 1fr 60px;
+  gap: 1em;
+}
+.content-wrapper.cart {
+  display: grid;
+  grid-template-rows: 30px 1fr 2px 1.3em 45px;
+  gap: 1em;
+}
+.content-wrapper.order {
+  display: grid;
+  grid-template-rows: 30px 30px 1fr 2px 1.3em 45px;
+  gap: 1em;
+}
+.content-wrapper.empty {
+  justify-content: center;
+  align-items: center;
+}
+
+.panel-header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  color: whitesmoke;
+}
+button.menu {
+  position: relative;
+  border-radius: 50%;
+  background-color: #2a2a2a;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2em;
+}
+button.menu:active {
+  background-color: rgba(42, 42, 42, 0.5);
+}
+button.btn-panel {
+  border-radius: 50%;
+  background-color: #e8b225;
+  color: whitesmoke;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2em;
+  border: 4px solid white;
+}
+button.btn-panel:active {
+  background-color: #ce9c20;
+}
+button.btn-panel.absolute {
+  position: absolute;
+  top: 0.7em;
+  right: 0.3em;
+}
+button.btn-add {
+  border-radius: 50%;
+  background-color: #e8b225;
+  max-width: 35px;
+  max-height: 35px;
+  width: 35px;
+  height: 35px;
+  font-size: 1.4em;
+}
+button.btn-add:active {
+  background-color: #ce9c20;
+}
+button.btn-primary {
+  border-radius: 30px;
+  background-color: #e8b225;
+  text-transform: uppercase;
+  font-weight: 600;
+  height: 45px;
+  font-size: 0.9em;
+  width: 60%;
+}
+button.btn-primary:active {
+  background-color: #ce9c20;
+}
+button.btn-outlined {
+  border-radius: 30px;
+  border: 1px solid #e8b225;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: #e8b225;
+  font-weight: 600;
+  height: 45px;
+  font-size: 0.9em;
+  width: 60%;
+}
+button.w-100 {
+  width: 100%;
+}
+
+.btn-add-remove {
+  display: flex;
+  flex-direction: row;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e8b225;
+  color: rgb(19, 19, 19);
+  height: 35px;
+  padding: 0 0.5em;
+  gap: 5px;
+  background-color: #ffffff;
+}
+.btn-add-remove button {
+  background-color: #ffffff;
+  color: #e8b225;
+  border: 0;
+  font-size: 1.4rem;
+}
+.btn-add-remove.large {
+  height: 45px;
+  gap: 10px;
+  border-radius: 30px;
+}
+.btn-add-remove.large .current-qty {
+  font-size: 1.4em;
+}
+.btn-add-remove.large button {
+  font-size: 1.8em;
+}
+
+.action-link {
+  color: #e8b225;
+  font-weight: 500;
+  text-decoration: underline;
+}/*# sourceMappingURL=main.css.map */

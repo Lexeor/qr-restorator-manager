@@ -1,0 +1,275 @@
+@import "./variables";
+@import "./mixins";
+
+// Generic
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter Tight", sans-serif;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+hr {
+  width: 100%;
+  height: 0;
+  margin: 0;
+  border: 0;
+  border-top: 1px dashed rgba($text-secondary, 0.5);
+}
+
+// Typographics
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-size: 1.4em;
+}
+
+h3 {
+  margin: 0.6em 0 0.4em 0;
+}
+
+// Layout
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  background-color: $color-background-dark;
+}
+
+.App {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $color-background-dark;
+}
+
+main {
+  width: 100%;
+  color: $text-dark;
+  padding: 0 $padding-min;
+  background: rgb(238, 238, 238);
+  background: linear-gradient(
+    0deg,
+    rgba(238, 238, 238, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  max-height: calc(100vh - 70px);
+  position: absolute;
+  bottom: 0;
+  transition: all 0.3s ease-in-out;
+  height: -webkit-fill-available;
+  overflow: hidden;
+  border-radius: $border-radius-l $border-radius-l 0 0;
+  // Safari fix
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: -webkit-radial-gradient(white, black);
+}
+
+.categories-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 0.5em;
+  width: 100%;
+  overflow-x: auto;
+  overscroll-behavior: none;
+  @include scrollbars(0, $color-primary);
+  flex-shrink: 0;
+}
+
+.category-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.content-wrapper {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: $padding-std $padding-min;
+  @include scrollbars(0, $color-primary);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+
+  &.product {
+    display: grid;
+    grid-template-rows: 200px 1fr 60px;
+    gap: 1em;
+  }
+
+  &.cart {
+    display: grid;
+    grid-template-rows: 30px 1fr 2px 1.3em 45px;
+    gap: 1em;
+  }
+
+  &.order {
+    display: grid;
+    grid-template-rows: 30px 30px 1fr 2px 1.3em 45px;
+    gap: 1em;
+  }
+
+  &.empty {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.panel-header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// Buttons
+
+button {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  color: $text-light;
+
+  &.menu {
+    position: relative;
+    border-radius: 50%;
+    background-color: $color-secondary;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2em;
+
+    &:active {
+      background-color: rgba($color-secondary, 0.5);
+    }
+  }
+
+  &.btn-panel {
+    border-radius: 50%;
+    background-color: $color-primary;
+    color: $text-light;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2em;
+    border: 4px solid white;
+
+    &:active {
+      background-color: $color-primary-shaded;
+    }
+
+    &.absolute {
+      position: absolute;
+      top: 0.7em;
+      right: 0.3em;
+    }
+  }
+
+  &.btn-add {
+    border-radius: 50%;
+    background-color: $color-primary;
+    max-width: 35px;
+    max-height: 35px;
+    width: 35px;
+    height: 35px;
+    font-size: 1.4em;
+
+    &:active {
+      background-color: $color-primary-shaded;
+    }
+  }
+
+  &.btn-primary {
+    border-radius: $border-radius-l;
+    background-color: $color-primary;
+    text-transform: uppercase;
+    font-weight: 600;
+    height: 45px;
+    font-size: 0.9em;
+    width: 60%;
+
+    &:active {
+      background-color: $color-primary-shaded;
+    }
+  }
+
+  &.btn-outlined {
+    border-radius: $border-radius-l;
+    border: 1px solid $color-primary;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: $color-primary;
+    font-weight: 600;
+    height: 45px;
+    font-size: 0.9em;
+    width: 60%;
+  }
+
+  &.w-100 {
+    width: 100%;
+  }
+}
+
+.btn-add-remove {
+  display: flex;
+  flex-direction: row;
+  border-radius: $border-radius-m;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $color-primary;
+  color: $text-dark;
+  height: 35px;
+  padding: 0 0.5em;
+  gap: 5px;
+  background-color: $color-white;
+
+  button {
+    background-color: $color-white;
+    color: $color-primary;
+    border: 0;
+    font-size: 1.4rem;
+  }
+
+  &.large {
+    height: 45px;
+    gap: 10px;
+    border-radius: $border-radius-l;
+
+    .current-qty {
+      font-size: 1.4em;
+    }
+
+    button {
+      font-size: 1.8em;
+    }
+  }
+}
+
+.action-link {
+  color: $color-primary;
+  font-weight: 500;
+  text-decoration: underline;
+}
