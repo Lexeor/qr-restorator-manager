@@ -4,6 +4,7 @@ const initialState = {
   name: "",
   restaurant: "",
   email: "",
+  isAuthenticated: false,
 };
 
 const userSlice = createSlice({
@@ -15,6 +16,7 @@ const userSlice = createSlice({
       state.name = name;
       state.restaurant = restaurant;
       state.email = email;
+      state.isAuthenticated = true;
     },
   },
 });
