@@ -32,7 +32,7 @@ function Login() {
 
   useEffect(() => {
     if (isLoginSuccess) {
-      toast.success('User Login successfully');
+      toast.success('User Login successful');
       dispatch(setUser({ token: loginData.token }));
       navigate('/');
     }
@@ -41,8 +41,6 @@ function Login() {
 
   useEffect(() => {
     if (isLoginError) {
-      console.log(loginError);
-      // toast.error((loginError as any).data.non_field_errors);
       toast.error((loginError as any).data.non_field_errors[0]);
     }
     // eslint-disable-next-line
