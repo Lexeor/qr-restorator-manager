@@ -4,8 +4,6 @@ import { Navigate } from 'react-router-dom';
 export const RequireAuth = ({ children }: { children: React.ReactNode }) => {
   const token = useAppSelector((state) => state.auth.token);
 
-  console.log(token);
-
   if (!token) {
     return <Navigate to="/login" />;
   }

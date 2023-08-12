@@ -4,6 +4,8 @@ import { useAppDispatch } from './app/store';
 import { useEffect } from 'react';
 import { setUser } from './app/features/auth/authSlice';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Profile from './pages/Profile';
@@ -20,6 +22,7 @@ function App() {
 
   return (
     <>
+      <ToastContainer />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

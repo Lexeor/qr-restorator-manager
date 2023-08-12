@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLoginUserMutation } from '../services/authApi';
 import { useAppDispatch } from '../app/store';
 import { setUser } from '../app/features/auth/authSlice';
+import { toast } from 'react-toastify';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -29,12 +30,21 @@ function Login() {
 
   useEffect(() => {
     if (isLoginSuccess) {
-      console.log('User login successfully');
+      toast.success('User Login successfully');
       dispatch(setUser({ token: loginData.token }));
       navigate('/');
     }
     // eslint-disable-next-line
   }, [isLoginSuccess]);
+
+  useEffect(() => {
+    if (isLoginError) {
+      console.log(loginError);
+      // toast.error((loginError as any).data.non_field_errors);
+      toast.error((loginError as any).data.non_field_errors[0]);
+    }
+    // eslint-disable-next-line
+  }, [isLoginError]);
 
   return (
     <div>
