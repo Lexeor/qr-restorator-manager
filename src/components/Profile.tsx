@@ -1,10 +1,10 @@
-import React from "react";
-import { useAppSelector } from "../app/store";
+import React from 'react';
+import { useAppSelector } from '../app/store';
 
 type Props = {};
 
 function Profile({}: Props) {
-  const userName = useAppSelector((state) => state.user.name);
+  const userName = useAppSelector((state) => state.auth.name);
 
   return <div>Profile of user {userName}</div>;
 }

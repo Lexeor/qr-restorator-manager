@@ -1,10 +1,9 @@
-import { Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import Profile from "./components/Profile";
-import { RequireAuth } from "./hocs/RequireAuth";
-import Login from "./components/Login";
-import Logout from "./components/Logout";
+import { Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import Profile from './components/Profile';
+import { RequireAuth } from './hocs/RequireAuth';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -21,7 +20,6 @@ function App() {
           }
         />
         <Route path="/login" element={<Login />} />
-        <Route path="/logout" element={<Logout />} />
       </Routes>
     </>
   );

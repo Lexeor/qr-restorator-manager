@@ -1,12 +1,11 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import { useAppSelector, useAppDispatch } from "../app/store";
-import { logout } from "../app/features/user/userReducer";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { useAppSelector, useAppDispatch } from '../app/store';
 
 type Props = {};
 
 function Navbar({}: Props) {
-  const isAuth = useAppSelector((state) => state.user.isAuthenticated);
+  const isAuth = useAppSelector((state) => state.auth.token);
 
   return (
     <nav className="primary-nav">
