@@ -1,5 +1,4 @@
 import { useAppSelector } from '../app/store';
-import LogoutButton from '../components/LogoutButton';
 
 function Profile() {
   const userName = useAppSelector((state) => state.auth.token);
@@ -8,7 +7,6 @@ function Profile() {
     <div>
       Profile of user {userName}
       <br />
-      <LogoutButton />
     </div>
   );
 }
