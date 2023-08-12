@@ -1,9 +1,7 @@
-import React from "react";
-
-type Props = {};
+import React from 'react';
 
 // TODO: Layout page
-function Layout({}: Props) {
+function Layout() {
   return <div>Layout</div>;
 }
 
