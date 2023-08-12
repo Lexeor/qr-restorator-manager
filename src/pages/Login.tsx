@@ -22,7 +22,9 @@ function Login() {
     },
   ] = useLoginUserMutation();
 
-  const handleLogin = async () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
     if (username && password) {
       await loginUser({ username, password });
     }
@@ -47,16 +49,38 @@ function Login() {
   }, [isLoginError]);
 
   return (
-    <div>
-      <label htmlFor="">
-        UserName:{' '}
-        <input type="text" onChange={(e) => setUsername(e.target.value)} />
-      </label>
-      <label htmlFor="">
-        Password:{' '}
-        <input type="password" onChange={(e) => setPassword(e.target.value)} />
-      </label>
-      <button onClick={handleLogin}>Login</button>
+    <div className="login-wrapper">
+      <section className="login">
+        <h1>Login</h1>
+
+        <form onSubmit={handleSubmit}>
+          <div className="form-row">
+            <label htmlFor="username">Username: </label>
+            <input
+              id="username"
+              type="text"
+              className="large"
+              autoComplete="off"
+              required
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
+
+          <div className="form-row">
+            <label htmlFor="password">Password: </label>
+            <input
+              id="password"
+              type="password"
+              className="large"
+              autoComplete="off"
+              required
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+
+          <button className="btn-primary large w-100">Sign In</button>
+        </form>
+      </section>
     </div>
   );
 }
