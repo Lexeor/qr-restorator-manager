@@ -32,7 +32,6 @@ function Login() {
 
   useEffect(() => {
     if (isLoginSuccess) {
-      toast.success('User Login successful');
       dispatch(setUser({ token: loginData.token }));
       navigate('/');
     }
