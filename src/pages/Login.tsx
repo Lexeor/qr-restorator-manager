@@ -30,9 +30,10 @@ function Login() {
   useEffect(() => {
     if (isLoginSuccess) {
       console.log('User login successfully');
-      dispatch(setUser({ token: loginData.token, name: loginData.name }));
+      dispatch(setUser({ token: loginData.token }));
       navigate('/');
     }
+    // eslint-disable-next-line
   }, [isLoginSuccess]);
 
   return (

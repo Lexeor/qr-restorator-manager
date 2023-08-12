@@ -1,12 +1,13 @@
 import { Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Home from './components/Home';
-import Profile from './pages/Profile';
 import { RequireAuth } from './hocs/RequireAuth';
-import Login from './pages/Login';
 import { useAppDispatch } from './app/store';
 import { useEffect } from 'react';
 import { setUser } from './app/features/auth/authSlice';
+
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import Profile from './pages/Profile';
+import Login from './pages/Login';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -14,6 +15,7 @@ function App() {
 
   useEffect(() => {
     dispatch(setUser(user));
+    // eslint-disable-next-line
   }, []);
 
   return (
