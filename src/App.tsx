@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import Profile from "./components/Profile";
 import { RequireAuth } from "./hocs/RequireAuth";
 import Login from "./components/Login";
+import Logout from "./components/Logout";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           }
         />
         <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
       </Routes>
     </>
   );
