@@ -9,7 +9,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import Home from './pages/Home';
 import Login from './pages/Login';
-import axios from 'axios';
 import Dashboard from './pages/Dashboard';
 import Restaurant from './pages/Restaurant';
 import ManagerLayout from './layouts/ManagerLayout';
@@ -18,30 +17,28 @@ import Tables from './pages/Tables';
 import Menu from './pages/Menu';
 import Dishes from './pages/Dishes';
 import Reports from './pages/Reports';
+import { getUserInfo } from './services/user.service';
 
 function App() {
   const dispatch = useAppDispatch();
   const user = JSON.parse(localStorage.getItem('user') || '{}');
 
+  const getMe = async () => {
+    const res = await getUserInfo();
+
+    if (res.status === 200) {
+      dispatch(setUser(user));
+    } else {
+      dispatch(logout());
+    }
+  };
+
   useEffect(() => {
     // ask server is token valid
-    const getMe = async (token: string) => {
-      const res = await axios.get('http://62.84.125.174:81/api/manager/me/', {
-        headers: { Authorization: `token ${token}` },
-      });
-
-      if (res.status === 200) {
-        dispatch(setUser(user));
-      } else {
-        dispatch(logout());
-      }
-    };
-
     // Request user info only if token is in localStorage
     if (user && user.token) {
-      getMe(user.token);
+      getMe();
     }
-
     // eslint-disable-next-line
   }, []);
 
