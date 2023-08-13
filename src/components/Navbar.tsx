@@ -8,7 +8,7 @@ function Navbar() {
   return (
     <nav className="primary-nav">
       <NavLink to="/">Home</NavLink>
-      {isAuth && <NavLink to="/protected">Protected</NavLink>}
+      {/* {isAuth && <NavLink to="/protected">Protected</NavLink>} */}
       {!isAuth && <NavLink to="/login">Login</NavLink>}
       <div className="nav-buttons-right">{isAuth && <LogoutButton />}</div>
     </nav>

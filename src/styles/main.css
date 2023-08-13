@@ -1,3 +1,13 @@
+.manager-layout {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
 /** 
 * scrollbars mixin
  * @param  {size}                Scrollbar handler width & height
@@ -19,9 +29,42 @@
 }
 
 aside {
-  width: 300px;
+  width: 250px;
+  min-width: 250px;
   height: 100vh;
   background-color: #111111;
+  display: flex;
+  flex-direction: column;
+  padding: 2em 0;
+}
+aside nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  color: #ce9c20;
+}
+aside nav a {
+  color: gray;
+}
+aside nav a.active {
+  color: #e8b225;
+}
+
+.sidebar-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+  flex-grow: 1;
+}
+
+.logo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  margin-bottom: 2em;
 }
 
 * {
@@ -81,19 +124,8 @@ body {
 
 main {
   width: 100%;
-  color: rgb(19, 19, 19);
-  padding: 0 0.5em;
-  background: rgb(238, 238, 238);
-  background: linear-gradient(0deg, rgb(238, 238, 238) 0%, rgb(255, 255, 255) 100%);
-  max-height: calc(100vh - 70px);
-  position: absolute;
-  bottom: 0;
-  transition: all 0.3s ease-in-out;
-  height: -webkit-fill-available;
-  overflow: hidden;
-  border-radius: 30px 30px 0 0;
-  -webkit-mask-image: -webkit-radial-gradient(white, black);
-          mask-image: -webkit-radial-gradient(white, black);
+  height: 100%;
+  padding: 1em;
 }
 
 .categories-wrapper {

@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { RequireAuth } from './hocs/RequireAuth';
+import PrivateRoutes from './hocs/PrivateRoutes';
 import { useAppDispatch } from './app/store';
 import { useEffect } from 'react';
 import { logout, setUser } from './app/features/auth/authSlice';
@@ -7,11 +7,13 @@ import { logout, setUser } from './app/features/auth/authSlice';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import Navbar from './components/Navbar';
 import Home from './pages/Home';
-import Profile from './pages/Profile';
 import Login from './pages/Login';
 import axios from 'axios';
+import Dashboard from './pages/Dashboard';
+import Restaurant from './pages/Restaurant';
+import ManagerLayout from './layouts/ManagerLayout';
+import MainLayout from './layouts/MainLayout';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -42,17 +44,17 @@ function App() {
   return (
     <>
       <ToastContainer />
-      <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route
-          path="/protected"
-          element={
-            <RequireAuth>
-              <Profile />
-            </RequireAuth>
-          }
-        />
+        <Route path="/" element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+        </Route>
+        {/* Protected routes */}
+        <Route path="manager" element={<PrivateRoutes />}>
+          <Route element={<ManagerLayout />}>
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="restaurant" element={<Restaurant />} />
+          </Route>
+        </Route>
         <Route path="/login" element={<Login />} />
       </Routes>
     </>

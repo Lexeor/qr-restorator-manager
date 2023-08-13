@@ -33,7 +33,7 @@ function Login() {
   useEffect(() => {
     if (isLoginSuccess) {
       dispatch(setUser({ token: loginData.token }));
-      navigate('/');
+      navigate('/manager/dashboard');
     }
     // eslint-disable-next-line
   }, [isLoginSuccess]);
