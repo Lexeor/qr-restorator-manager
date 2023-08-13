@@ -14,6 +14,10 @@ import Dashboard from './pages/Dashboard';
 import Restaurant from './pages/Restaurant';
 import ManagerLayout from './layouts/ManagerLayout';
 import MainLayout from './layouts/MainLayout';
+import Tables from './pages/Tables';
+import Menu from './pages/Menu';
+import Dishes from './pages/Dishes';
+import Reports from './pages/Reports';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -52,6 +56,10 @@ function App() {
         <Route path="manager" element={<PrivateRoutes />}>
           <Route element={<ManagerLayout />}>
             <Route path="dashboard" element={<Dashboard />} />
+            <Route path="tables" element={<Tables />} />
+            <Route path="menu" element={<Menu />} />
+            <Route path="dishes" element={<Dishes />} />
+            <Route path="reports" element={<Reports />} />
             <Route path="restaurant" element={<Restaurant />} />
           </Route>
         </Route>
